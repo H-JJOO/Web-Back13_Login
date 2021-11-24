@@ -12,7 +12,7 @@
     <form action="/board/write" method="post">
         <div>
             <div><input type="text" name="title" placeholder="TITLE" value="${requestScope.data}"></div>
-            <div><textarea name="ctnt" placeholder="CONTENT" rows="20"></textarea>${requestScope.data}</div>
+            <div><textarea name="ctnt" placeholder="CONTENT" rows="20">${requestScope.data}</textarea></div>
             <div>
                 <input type="submit" value="글등록">
                 <input type="reset" value="초기화">
