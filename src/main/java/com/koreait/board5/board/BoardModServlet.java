@@ -20,13 +20,13 @@ public class BoardModServlet extends HttpServlet {
             return;
         }
 
-        //TODO 여기서부터 다시...
-        int iboard = MyUtils.getParameterInt(req, "iboard");
-        BoardVO param = new BoardVO();
-        param.setIboard(iboard);
-        BoardVO data = BoardDAO.selBoardDetail(param);
-        req.setAttribute("data", data);
-
+        if (req.getAttribute("data") == null) {
+            int iboard = MyUtils.getParameterInt(req, "iboard");
+            BoardVO param = new BoardVO();
+            param.setIboard(iboard);
+            BoardVO data = BoardDAO.selBoardDetail(param);
+            req.setAttribute("data", data);
+        }
         MyUtils.disForward(req, res, "/board/mod");
     }
 

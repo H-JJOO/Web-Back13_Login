@@ -55,6 +55,7 @@ public class UserLoginServlet extends HttpServlet {
                 break;
         }
         req.setAttribute("err", err);
+        doGet(req, res);
 
 
 

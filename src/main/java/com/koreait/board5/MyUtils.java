@@ -26,6 +26,10 @@ public class MyUtils {
         }
     }
 
+    public static int getParameterInt(HttpServletRequest req, String key, int defVal) {
+        return parseStingToInt(req.getParameter(key), defVal);
+    }
+
     public static int getParameterInt(HttpServletRequest req, String key) {
         String strVal = req.getParameter(key);
         int intVal = parseStringToInt(strVal);
@@ -49,6 +53,6 @@ public class MyUtils {
     public static int getLoginUserIboard(HttpServletRequest req) {
         UserVO loginUser = getLoginUser(req);
         return loginUser == null ? 0 : loginUser.getIuser();
-        // TODO 집에가서 한번 더 보자
+
     }
 }

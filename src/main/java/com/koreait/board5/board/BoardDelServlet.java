@@ -1,4 +1,4 @@
-package com.koreait.board5.board;
+ package com.koreait.board5.board;
 
 import com.koreait.board5.MyUtils;
 import com.koreait.board5.dao.BoardDAO;
@@ -17,13 +17,12 @@ import java.io.IOException;
 public class BoardDelServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-        HttpSession session = req.getSession();
-        UserVO loginUser = (UserVO)session.getAttribute("loginUser");
+//        HttpSession session = req.getSession();
+//        UserVO loginUser = (UserVO)session.getAttribute("loginUser");
 
         if (MyUtils.isLogout(req)) {
-            req.setAttribute("err", "로그인 해주세요!");
+            req.setAttribute("err", "!!!정상적인 방법으로 접근해주세요!!!");
             req.getRequestDispatcher("/user/login").forward(req, res);
-            // TODO 집에가서 다시보자
             return;
         }
 
@@ -32,7 +31,7 @@ public class BoardDelServlet extends HttpServlet {
         BoardVO param = new BoardVO();
 
         param.setIboard(iboard);
-        param.setWriter(loginUser.getIuser());
+        param.setWriter(MyUtils.getLoginUserIboard(req));
 
         int result = BoardDAO.delBoard(param);
 

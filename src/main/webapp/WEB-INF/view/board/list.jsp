@@ -3,8 +3,10 @@
 <%@ page import="com.koreait.board5.model.UserVO" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
+
     UserVO loginUser = (UserVO)session.getAttribute("loginUser");
     List<BoardVO> list = (List<BoardVO>)request.getAttribute("data");
+    int maxPAge = (int)request.getAttribute("maxPage");
 %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -12,8 +14,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>list</title>
+    <style>
+        html {height: 100%;}
+        .position {height: 100%; display: flex; flex-direction: column;}
+    </style>
 </head>
-<body>
+<body class="position">
     <%if (loginUser == null) { %>
         <div>
             <a href="/user/login"><input type="button" value="login"></a>
@@ -52,5 +58,12 @@
 
         <% } %>
     </table>
+
+    <div style="margin-top: 20px; display: flex; justify-content: center;">
+        <% for (int i = 1; i <= maxPAge; i++) { %>
+            <span><a href="/board/list?page=<%=i%>"><%=i%></a></span>&nbsp;
+        <% } %>
+    </div>
+
 </body>
 </html>

@@ -27,12 +27,12 @@ public class BoardWriteServlet extends HttpServlet {
 
         BoardVO param = new BoardVO();
 
-        HttpSession session = req.getSession();
-        UserVO loginUser = (UserVO)session.getAttribute("loginUser");
+//        HttpSession session = req.getSession();
+//        UserVO loginUser = (UserVO)session.getAttribute("loginUser");
 
         param.setTitle(title);
         param.setCtnt(ctnt);
-        param.setWriter(loginUser.getIuser());
+        param.setWriter(MyUtils.getLoginUserIboard(req));
 
         int result = BoardDAO.insBoard(param);
 

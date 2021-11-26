@@ -5,10 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mod</title>
+    <style>
+        .err {color: red;}
+    </style>
 </head>
 <body>
 <h1>글수정</h1>
-<div>${requestScope.err}</div>
+<div class="err">${requestScope.err}</div>
 <form action="/board/mod?iboard=${requestScope.data.iboard}" method="post" id="frm">
     <div>
         <div><input type="text" name="title" placeholder="TITLE" value="${requestScope.data.title}"></div>

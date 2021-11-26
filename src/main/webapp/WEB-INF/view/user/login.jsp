@@ -13,6 +13,7 @@
     </style>
 </head>
 <body class="position">
+    <div style="color: red;">${requestScope.err}</div>
     <h1>로그인</h1>
     <form action="/user/login" method="post">
         <div>
